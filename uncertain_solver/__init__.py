@@ -1,6 +1,6 @@
 from decimal import Decimal
 from typing import Callable, Optional
-from .util import *
+from ._util import *
 
 
 class EquationComponent:
@@ -36,7 +36,7 @@ class EquationValue (EquationComponent):
     def from_uncertainty_plus_minus(cls, value: Decimal, uncertainty_plus_minus: Decimal):
         return cls(
             value=value,
-            uncertainty_percentage=uncertainty_plus_minus / value
+            uncertainty_percentage=abs(uncertainty_plus_minus / value)
         )
 
     @property
